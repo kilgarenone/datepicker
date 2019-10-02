@@ -16,6 +16,11 @@ export default {
       }
     },
     {
+      file: pkg.browser,
+      format: "umd",
+      name: "DatePickerDate"
+    },
+    {
       file: pkg.module,
       format: "es",
       globals: {

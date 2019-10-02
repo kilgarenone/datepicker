@@ -1,9 +1,10 @@
 {
   "name": "datepickerdate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A datepicker that gives you the dates you selected",
-  "main": "./lib/index.js",
+  "main": "./lib/index.cjs.js",
   "module": "./lib/index.es.js",
+  "browser": "./lib/index.js",
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
