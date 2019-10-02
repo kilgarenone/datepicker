@@ -1,0 +1,26 @@
+{
+  "name": "datepickerdate",
+  "version": "1.0.0",
+  "description": "A datepicker that gives you the dates you selected",
+  "main": "./lib/index.js",
+  "module": "./lib/index.es.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.6.2",
+    "preact": "^10.0.0-rc.3",
+    "rollup": "^1.22.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-terser": "^5.1.2"
+  }
+}

@@ -1,0 +1,85 @@
+.dpd .calendar {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  min-width: 17rem;
+  z-index: 1;
+}
+
+.dpd .monthPicker {
+  display: flex;
+  align-items: center;
+}
+
+.dpd .prevMonth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.dpd .nextMonth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.dpd .monthArrow {
+  font-size: 2rem;
+  line-height: 0;
+}
+
+.dpd .monthYearLabel {
+  white-space: nowrap;
+}
+
+.dpd .dayLabels {
+  display: flex;
+  color: #848f99;
+}
+.dpd .dayLabel {
+  flex-basis: 14.2857%;
+  text-align: center;
+}
+
+.dpd .dateLabels {
+  display: flex;
+  flex-wrap: wrap;
+  border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+
+.dpd .dateLabel {
+  min-width: 2.1rem;
+  flex-basis: 14.2857%;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dpd .today {
+  position: relative;
+}
+
+.dpd .today::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-bottom: 0.75em solid #06c;
+  border-left: 0.75em solid transparent;
+  border-top: 0.75em solid transparent;
+}
+
+.dpd .notInMonth {
+  color: #ccc;
+}
+
+.dpd .currentDay {
+  background-color: black;
+  color: white;
+}
