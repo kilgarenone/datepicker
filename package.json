@@ -1,6 +1,6 @@
 {
   "name": "datepickerdate",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A datepicker that gives you the dates you selected",
   "main": "./lib/index.js",
   "module": "./lib/index.es.js",
@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
