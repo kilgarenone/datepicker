@@ -35,7 +35,7 @@ export default class Datepicker extends Component {
         {label && <label>{label}</label>}
         <input
           type="text"
-          value={formatter(date)}
+          value={formatter ? formatter(date) : date}
           readOnly="readonly"
           placeholder={placeholder}
           onClick={this.toggleCalendar}

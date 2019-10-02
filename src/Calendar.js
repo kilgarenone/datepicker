@@ -50,7 +50,7 @@ export class Calendar extends Component {
     const monthname = CALENDAR_MONTHS[month - 1];
 
     return (
-      <div class={`mb-xs ${s.monthPicker}`}>
+      <div class="monthPicker">
         <button
           type="button"
           class="prevMonth"
@@ -82,7 +82,7 @@ export class Calendar extends Component {
     // Resolve the day of the week label from the WEEK_DAYS object map
     // const daylabel = WEEK_DAYS[day].toUpperCase();
     return (
-      <div class="mb-xs f-s dayLabels">
+      <div class="dayLabels">
         {WEEK_DAYS.map(day => (
           <div class="dayLabel">{day[0]}</div>
         ))}
@@ -119,8 +119,7 @@ export class Calendar extends Component {
               !inMonth && "notInMonth",
               isCurrent && "currentDay",
               isToday && "today",
-              "dateLabel",
-              "p-xs"
+              "dateLabel"
             ]
               .filter(Boolean)
               .join(" ")}
