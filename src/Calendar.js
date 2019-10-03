@@ -61,7 +61,7 @@ export class Calendar extends Component {
           <span class="monthArrow">&#8592;</span>
         </button>
         <div class="monthYearLabel">
-          {monthname.toUpperCase()} {year}
+          {monthname} {year}
         </div>
         <button
           type="button"

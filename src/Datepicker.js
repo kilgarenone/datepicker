@@ -1,11 +1,12 @@
-import { h, Component } from "preact";
+import { h, Component, createRef } from "preact";
 
 import { Calendar } from "./Calendar";
 import { getDateISO } from "./calendar-helpers";
-import "./Calendar.css";
 
-export default class Datepicker extends Component {
+export class Datepicker extends Component {
   state = { date: null, calendarOpen: false };
+
+  datepickerRef = createRef();
 
   componentDidMount() {
     const { value: date } = this.props;
@@ -15,31 +16,48 @@ export default class Datepicker extends Component {
     this.setState({ date: getDateISO(new Date(date)) });
   }
 
-  toggleCalendar = () =>
-    this.setState(prevState => ({ calendarOpen: !prevState.calendarOpen }));
+  componentWillUnmount() {
+    document.removeEventListener("click", this.checkClickOutside);
+  }
 
-  handleChange = evt => evt.preventDefault();
+  checkClickOutside = e => {
+    if (this.datepickerRef.current) {
+      if (!this.datepickerRef.current.contains(e.target)) {
+        this.toggleCalendar();
+      }
+    }
+  };
+
+  toggleCalendar = () => {
+    this.setState(
+      prevState => ({ calendarOpen: !prevState.calendarOpen }),
+      () => {
+        if (this.state.calendarOpen) {
+          document.addEventListener("click", this.checkClickOutside);
+        } else {
+          document.removeEventListener("click", this.checkClickOutside);
+        }
+      }
+    );
+  };
 
   handleDateChange = date => {
     const { onDateChanged, name } = this.props;
-    // not sure why i needed to do this..
-    setTimeout(() =>
-      this.setState({ date: getDateISO(date), calendarOpen: false })
-    );
+    this.setState({ date: getDateISO(date) });
+    this.toggleCalendar();
     typeof onDateChanged === "function" && onDateChanged(name, date);
   };
 
-  render({ label, placeholder, formatter }, { date, calendarOpen }) {
+  render({ label, placeholder, formatter = d => d }, { date, calendarOpen }) {
     return (
-      <div class="dpd" style="position:relative">
+      <div ref={this.datepickerRef} class="dpd" style="position:relative">
         {label && <label>{label}</label>}
         <input
           type="text"
-          value={formatter ? formatter(date) : date}
+          value={formatter(date)}
           readOnly="readonly"
           placeholder={placeholder}
           onClick={this.toggleCalendar}
-          onBlur={this.toggleCalendar}
         />
         {calendarOpen && (
           <Calendar

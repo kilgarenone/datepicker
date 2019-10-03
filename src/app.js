@@ -1,10 +1,21 @@
 import { h, Component, render } from "preact";
-import DatePicker from "./Datepicker";
+import { Datepicker } from "./Datepicker";
+import "./Calendar.css";
 
-class HelloPreact extends Component {
+class DatepickerDate extends Component {
+  handleChange = (name, value) => {
+    document.getElementById("output").textContent = `${name} : ${value}`;
+  };
   render() {
-    return <DatePicker label="haha" value="2019-02-11" />;
+    return (
+      <Datepicker
+        name="date"
+        label="Date"
+        value="2019-02-11"
+        onDateChanged={this.handleChange}
+      />
+    );
   }
 }
 
-render(<HelloPreact />, document.getElementById("root"));
+render(<DatepickerDate />, document.getElementById("root"));

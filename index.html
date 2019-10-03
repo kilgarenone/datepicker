@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="src/app.min.css" />
     <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
@@ -36,6 +42,25 @@
         border: 2px solid blue;
       }
 
+      button {
+        font-size: 0.95rem;
+        font-weight: 600;
+        font-style: normal;
+        width: 100%;
+        height: 2.5rem;
+        padding: 0 18px;
+        border-radius: 5px;
+        border: 0;
+        text-transform: capitalize;
+        color: black;
+        background-color: transparent;
+        cursor: pointer;
+        &:disabled {
+          color: grey;
+          background-color: #ddd;
+        }
+      }
+
       blockquote,
       dd,
       dl,
@@ -58,12 +83,13 @@
         padding: 0;
       }
 
-      li {
-        list-style: none;
-      }
-
       img {
         max-width: 100%;
+      }
+
+      li {
+        list-style: none;
+        margin-bottom: 0.6rem;
       }
 
       button,
@@ -77,9 +103,21 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="root"></div>
+    <main style="padding: 2rem; max-width: 30em; margin: 0 auto">
+      <h1 style="margin-bottom: 1rem">Datepicker 📆</h1>
+      <ul>
+        <li>🦢 A <strong>Preact</strong>-based datepicking component.</li>
+        <li>🦩 <strong>Lightweight</strong> (2.9kB minified+gzipped).</li>
+        <li>🦆 No-frills- Just gives you <strong>ISO8601</strong> date.</li>
+        <li>
+          🦅 If desired, skip the optional CSS file and style yourself while,
+          you know, still get the dates. 😱
+        </li>
+      </ul>
+      <div id="root"></div>
+      <div id="output"></div>
+    </main>
     <script src="https://unpkg.com/preact@8.5.2/dist/preact.umd.js"></script>
-    <!-- <script src="https://unpkg.com/datepickerdate@0.0.2/lib/index.js"></script> -->
     <script src="src/app.min.js"></script>
   </body>
 </html>
