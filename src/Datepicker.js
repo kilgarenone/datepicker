@@ -41,11 +41,11 @@ export class Datepicker extends Component {
     );
   };
 
-  handleDateChange = date => {
+  handleDateChange = dateStr => {
     const { onDateChanged, name } = this.props;
-    this.setState({ date: getDateISO(date) });
+    this.setState({ date: dateStr });
     this.toggleCalendar();
-    typeof onDateChanged === "function" && onDateChanged(name, date);
+    typeof onDateChanged === "function" && onDateChanged(name, dateStr);
   };
 
   render({ label, placeholder, formatter = d => d }, { date, calendarOpen }) {

@@ -99,23 +99,43 @@
         color: inherit;
         font: inherit;
       }
+
+      strong {
+        font-weight: 600;
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
     <main style="padding: 2rem; max-width: 30em; margin: 0 auto">
-      <h1 style="margin-bottom: 1rem">Datepicker 📆</h1>
+      <h1 style="margin-bottom: 2rem; font-size: 67px">Datepicker 📆</h1>
       <ul>
         <li>🦢 A <strong>Preact</strong>-based datepicking component.</li>
-        <li>🦩 <strong>Lightweight</strong> (2.9kB minified+gzipped).</li>
+        <li>
+          🦩 <strong>Lightweight</strong> (<a
+            href="https://bundlephobia.com/result?p=datepickerdate@1.0.1"
+            >2.9kB</a
+          >
+          minified+gzipped).
+        </li>
         <li>🦆 No-frills- Just gives you <strong>ISO8601</strong> date.</li>
         <li>
           🦅 If desired, skip the optional CSS file and style yourself while,
           you know, still get the dates. 😱
         </li>
       </ul>
-      <div id="root"></div>
-      <div id="output"></div>
+      <div
+        style="padding: 25px;
+        margin-top: 2rem;
+background: #b7818142;
+border-radius: 8px;"
+        id="root"
+      ></div>
+      <em
+        style="margin-top: 1rem; display: block;
+color: #b78181"
+        id="output"
+      ></em>
     </main>
     <script src="https://unpkg.com/preact@8.5.2/dist/preact.umd.js"></script>
     <script src="src/app.min.js"></script>

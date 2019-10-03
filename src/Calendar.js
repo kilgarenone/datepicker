@@ -132,10 +132,11 @@ export class Calendar extends Component {
   );
 
   gotoDate = e => {
-    const date = new Date(e.target.dataset.date);
+    // eslint-disable-next-line prefer-destructuring
+    const date = e.target.dataset.date;
     const { onDateChanged } = this.props;
 
-    this.setState(this.resolveStateFromDate(date));
+    this.setState(this.resolveStateFromDate(new Date(date)));
     typeof onDateChanged === "function" && onDateChanged(date);
   };
 

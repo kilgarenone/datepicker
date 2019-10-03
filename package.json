@@ -1,6 +1,6 @@
 {
   "name": "datepickerdate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A datepicker that gives you the dates you selected",
   "main": "./lib/index.cjs.js",
   "module": "./lib/index.es.js",

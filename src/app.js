@@ -4,7 +4,7 @@ import "./Calendar.css";
 
 class DatepickerDate extends Component {
   handleChange = (name, value) => {
-    document.getElementById("output").textContent = `${name} : ${value}`;
+    document.getElementById("output").textContent = `Output: ${value}`;
   };
   render() {
     return (
