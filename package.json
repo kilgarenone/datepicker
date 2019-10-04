@@ -1,24 +1,58 @@
 {
   "name": "datepickerdate",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "A datepicker that gives you the dates you selected",
-  "main": "./lib/index.cjs.js",
-  "module": "./lib/index.es.js",
-  "browser": "./lib/index.js",
-  "scripts": {
-    "prepublish": "rollup -c",
-    "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "browser": "lib/index.js",
+  "style": "lib/index.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kilgarenone/datepicker.git"
   },
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "lint": "eslint --fix src",
+    "clean": "rimraf lib",
+    "build": "rollup -c",
+    "prepare": "npm run clean && npm run lint",
+    "prepublishOnly": "npm run clean && npm run lint && npm run build"
+  },
+  "keywords": [
+    "npm",
+    "javascript",
+    "rollup",
+    "preact",
+    "component",
+    "datepicker",
+    "lightweight",
+    "module"
+  ],
+  "author": "Kheoh Yee Wei <oldjoy@protonmail.com>",
   "license": "MIT",
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/kilgarenone/datepicker/issues"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "homepage": "https://github.com/kilgarenone/datepicker#readme",
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.6.2",
-    "preact": "^10.0.0-rc.3",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.15.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "preact": "^10.0.0",
+    "rimraf": "^3.0.0",
     "rollup": "^1.22.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-node-resolve": "^5.2.0",

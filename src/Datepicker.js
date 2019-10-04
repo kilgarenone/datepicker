@@ -1,61 +1,61 @@
-import { h, Component, createRef } from "preact";
+import { h, Component, createRef } from 'preact'
 
-import { Calendar } from "./Calendar";
-import { getDateISO } from "./calendar-helpers";
+import { Calendar } from './Calendar'
+import { getDateISO } from './calendar-helpers'
 
 export class Datepicker extends Component {
   state = { date: null, calendarOpen: false };
 
   datepickerRef = createRef();
 
-  componentDidMount() {
-    const { value: date } = this.props;
+  componentDidMount () {
+    const { value: date } = this.props
 
-    if (!date) return;
+    if (!date) return
 
-    this.setState({ date: getDateISO(new Date(date)) });
+    this.setState({ date: getDateISO(new Date(date)) })
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("click", this.checkClickOutside);
+  componentWillUnmount () {
+    document.removeEventListener('click', this.checkClickOutside)
   }
 
-  checkClickOutside = e => {
+  checkClickOutside = (e) => {
     if (this.datepickerRef.current) {
       if (!this.datepickerRef.current.contains(e.target)) {
-        this.toggleCalendar();
+        this.toggleCalendar()
       }
     }
   };
 
   toggleCalendar = () => {
     this.setState(
-      prevState => ({ calendarOpen: !prevState.calendarOpen }),
+      (prevState) => ({ calendarOpen: !prevState.calendarOpen }),
       () => {
         if (this.state.calendarOpen) {
-          document.addEventListener("click", this.checkClickOutside);
+          document.addEventListener('click', this.checkClickOutside)
         } else {
-          document.removeEventListener("click", this.checkClickOutside);
+          document.removeEventListener('click', this.checkClickOutside)
         }
       }
-    );
+    )
   };
 
-  handleDateChange = dateStr => {
-    const { onDateChanged, name } = this.props;
-    this.setState({ date: dateStr });
-    this.toggleCalendar();
-    typeof onDateChanged === "function" && onDateChanged(name, dateStr);
+  handleDateChange = (dateStr) => {
+    const { onDateChanged, name } = this.props
+    this.setState({ date: dateStr })
+    this.toggleCalendar()
+    typeof onDateChanged === 'function' && onDateChanged(name, dateStr)
   };
 
-  render({ label, placeholder, formatter = d => d }, { date, calendarOpen }) {
+  render ({ label, placeholder, formatter = (d) => d }, { date, calendarOpen }) {
     return (
-      <div ref={this.datepickerRef} class="dpd" style="position:relative">
+      <div ref={this.datepickerRef} className='dpd' style='position:relative'>
         {label && <label>{label}</label>}
         <input
-          type="text"
+          type='text'
           value={formatter(date)}
-          readOnly="readonly"
+          readOnly='readonly'
           placeholder={placeholder}
           onClick={this.toggleCalendar}
         />
@@ -66,6 +66,6 @@ export class Datepicker extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }

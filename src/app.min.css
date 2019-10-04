@@ -5,6 +5,7 @@
   background-color: #fff;
   border-radius: 4px;
   padding: 1rem;
+  padding-top: 0.5rem;
   min-width: 17rem;
   z-index: 1;
 }
@@ -34,6 +35,7 @@
 
 .dpd .monthYearLabel {
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .dpd .dayLabels {
@@ -45,24 +47,33 @@
 .dpd .dayLabel {
   flex-basis: 14.2857%;
   text-align: center;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.04rem;
 }
 
 .dpd .dateLabels {
   display: flex;
   flex-wrap: wrap;
-  border-left: 1px solid #eee;
-  border-top: 1px solid #eee;
+  border-left: 1px solid linen;
+  border-top: 1px solid linen;
 }
 
 .dpd .dateLabel {
   min-width: 2.1rem;
   flex-basis: 14.2857%;
-  border-bottom: 1px solid #eee;
-  border-right: 1px solid #eee;
+  border-bottom: 1px solid linen;
+  border-right: 1px solid linen;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.dpd .dateLabel:hover {
+  background-color: #f1f1f1;
 }
 
 .dpd .today {
@@ -74,13 +85,13 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  border-bottom: 0.75em solid #06c;
+  border-bottom: 0.75em solid lightseagreen;
   border-left: 0.75em solid transparent;
   border-top: 0.75em solid transparent;
 }
 
 .dpd .notInMonth {
-  color: #ccc;
+  color: #9e9e9e;
 }
 
 .dpd .currentDay {
