@@ -47,7 +47,7 @@ export default [
     plugins
   },
   {
-    input: "src/demo/app.js",
+    input: "src/app.js",
     output: [
       {
         file: "src/demo/app.min.js",

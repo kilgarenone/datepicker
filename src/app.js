@@ -1,6 +1,6 @@
 import { h, Component, render } from "preact";
-import { Datepicker } from "../Datepicker";
-import { WEEK_DAYS } from "../calendar-helpers";
+import { Datepicker } from "./Datepicker";
+import { WEEK_DAYS } from "./calendar-helpers";
 
 function formatDate(dateStr) {
   if (!dateStr) return;
@@ -17,8 +17,8 @@ class DatepickerDate extends Component {
     return (
       <Datepicker
         name="date"
-        label="Date"
-        value="2019-02-11"
+        label="Label"
+        value="2019-09-11"
         onDateChanged={this.handleChange}
         formatter={formatDate}
       />

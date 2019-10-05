@@ -1,6 +1,6 @@
 {
   "name": "datepickerdate",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A datepicker that gives you the dates you selected",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "lint": "eslint --fix src",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib src/demo",
     "build": "rollup -c",
     "prepublish": "npm run clean && npm run lint && npm run build"
   },
