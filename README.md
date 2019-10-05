@@ -11,7 +11,7 @@ Gives you the most basic datepicker functionality, while having total freedom on
 
 https://kheohyeewei.com/datepicker/
 
-## Installation
+## Install
 
 You can install `Datepickerdate` as an NPM package:
 
@@ -129,3 +129,58 @@ function dateFormatter(dateStr) {
 
 <Datepicker formatter={dateFormatter} />
 ```
+
+### Storage
+
+Before transmitting and storing your date, you might want to convert it to a **UTC** format by simply doing this:
+
+`new Date().toISOString() // 2019-10-05T05:51:02.124Z`
+
+## Props
+
+`label: string`
+_Optional_
+
+The label name of your datepicker form control.
+
+`name: string`
+_Optional_
+
+The `name` of your datepicker control.
+
+Exactly like the `name` in `<input name="age" />`
+
+`placeholder: string`
+_Optional_
+
+The placeholder for your datepicker input field.
+
+`value: string`
+_Optional_
+
+The initial date value.
+
+It must be in a format that can be parsed by the `Date` object. The standard practise is follow the **ISO8601** format (e.g `2019-10-22`) or in UTC (e.g `2019-10-05T05:51:02.124Z`)
+
+`onDateChanged: (name: string, date: string) => void`
+_Optional_
+
+A function to handle date changes.
+
+Parameter:
+
+1. `name` - The value of the value passed to the `name` prop.
+2. `date` - The selected date in ISO8601 format as a `string`.
+
+`formatter: (date: string) => string`
+_Optional_
+
+A function to convert a selected date into a desired format to display in the UI.
+
+Parameter:
+
+1. `date` - The selected date in ISO8601 format as a `string`.
+
+## License
+
+MIT © <a href="mailto:oldjoy@protonmail.com">Kheoh Yee Wei</a>
