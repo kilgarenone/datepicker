@@ -3,8 +3,11 @@
 Gives you the most basic datepicker functionality, while having total freedom on what to do with the selected date(ISO8601), its display format, and the overall look & feel.
 
 🦢 A **Preact** datepicker component
+
 🦩 Lightweight ([2.9kB](https://bundlephobia.com/result?p=datepickerdate@1.0.1) minified+gzipped)
+
 🦆 No-frills- Just give you the standard **ISO8601** date. Provide your own formatter function for display.
+
 🦅 You can skip the external CSS file and style yourself completely using pure CSS
 
 ## Demo
@@ -13,7 +16,7 @@ https://kheohyeewei.com/datepicker/
 
 ## Install
 
-You can install `Datepickerdate` as an NPM package:
+You can install `datepickerdate` as an NPM package:
 
 ```
 npm install datepickerdate
@@ -36,7 +39,10 @@ Or link directly to the [CDN](https://unpkg.com/browse/datepickerdate/):
 **ES Module**
 
 ```html
-<script src="https://unpkg.com/datepickerdate@1.0.12/lib/index.esm.js"></script>
+<script
+  type="module"
+  src="https://unpkg.com/datepickerdate@1.0.12/lib/index.esm.js"
+></script>
 ```
 
 ## Styles
@@ -83,13 +89,6 @@ Well, you use it like any other React component with props:
 ```js
 import { Datepicker } from "datepickerdate";
 
-function formatDate(dateStr) {
-  const date = new Date(dateStr);
-  return `${date.toLocaleString("en-US", {
-    month: "short"
-  })} ${date.getDate()}`;
-}
-
 class Datepicker extends Component {
   handleCtrlChange(name, value) {
     console.log(name, value);
@@ -102,7 +101,6 @@ class Datepicker extends Component {
         value="2019-08-28"
         placeholder="Your custom placeholder"
         onDateChanged={this.handleCtrlChange}
-        formatter={formatDate}
       />
     );
   }
@@ -111,11 +109,11 @@ class Datepicker extends Component {
 
 ## Formatting
 
-The display and transmission of a date are usually in a very different format.
+In practise, the display and transmission of a date are usually in a very different format.
 
-This datepicker output a selected date in the standard **ISO8601** format, effectively giving you total control in both cases.
+To give you total control in both cases, this datepicker simply output selected dates in the standard **ISO8601** format e.g `2019-10-22`.
 
-To display a selected date however you want, you will provide your own function that accepts an argument that is a ISO8601 date string.
+To display a selected date however you want, you will provide your own function that accepts an argument that is a ISO8601 date in string.
 
 For example, to display a date like `Fri 28`:
 
@@ -130,7 +128,7 @@ function dateFormatter(dateStr) {
 <Datepicker formatter={dateFormatter} />
 ```
 
-### Storage
+#### Storage
 
 Before transmitting and storing your date, you might want to convert it to a **UTC** format by simply doing this:
 
@@ -138,31 +136,29 @@ Before transmitting and storing your date, you might want to convert it to a **U
 
 ## Props
 
-`label: string`
+**label** : string
 _Optional_
 
 The label name of your datepicker form control.
 
-`name: string`
+**name** : string
 _Optional_
 
-The `name` of your datepicker control.
+The `name` of your datepicker control. Exactly like the `name` in `<input name="age" />`
 
-Exactly like the `name` in `<input name="age" />`
-
-`placeholder: string`
+**placeholder** : string
 _Optional_
 
 The placeholder for your datepicker input field.
 
-`value: string`
+**value** : string
 _Optional_
 
 The initial date value.
 
-It must be in a format that can be parsed by the `Date` object. The standard practise is follow the **ISO8601** format (e.g `2019-10-22`) or in UTC (e.g `2019-10-05T05:51:02.124Z`)
+It must be in a format that can be parsed by the `Date` object. The standard practise is follow the **ISO8601** format (e.g `2019-10-22`) or in **UTC** (e.g `2019-10-05T05:51:02.124Z`)
 
-`onDateChanged: (name: string, date: string) => void`
+**onDateChanged** : (name: string, date: string) => void
 _Optional_
 
 A function to handle date changes.
@@ -172,7 +168,7 @@ Parameter:
 1. `name` - The value of the value passed to the `name` prop.
 2. `date` - The selected date in ISO8601 format as a `string`.
 
-`formatter: (date: string) => string`
+**formatter** : (date: string) => string
 _Optional_
 
 A function to convert a selected date into a desired format to display in the UI.
