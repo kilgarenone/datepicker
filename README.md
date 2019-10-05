@@ -23,19 +23,19 @@ Or link directly to the [CDN](https://unpkg.com/browse/datepickerdate/):
 
 **CommonJS**
 
-```
+```html
 <script src="https://unpkg.com/datepickerdate@1.0.12/lib/index.cjs.js"></script>
 ```
 
 **UMD**
 
-```
+```html
 <script src="https://unpkg.com/datepickerdate@1.0.12/lib/index.js"></script>
 ```
 
 **ES Module**
 
-```
+```html
 <script src="https://unpkg.com/datepickerdate@1.0.12/lib/index.esm.js"></script>
 ```
 
@@ -43,11 +43,14 @@ Or link directly to the [CDN](https://unpkg.com/browse/datepickerdate/):
 
 You can either just use my CSS:
 
-```
-<link rel="stylesheet" href="https://unpkg.com/datepickerdate@1.0.12/lib/index.css"/>
+```html
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/datepickerdate@1.0.12/lib/index.css"
+/>
 ```
 
-```
+```js
 // in a css file
 @import './node_modules/datepickerdate/lib/index.css';
 
@@ -55,6 +58,74 @@ You can either just use my CSS:
 import "datepickerdate/lib/index.css";
 ```
 
-Or, skip all that and style your own with pure CSS! The wrapper `div` of the component has a CSS class called `dpd` as a namespace, and each of the major UI elements in the datepicker has an associated class you can select for styling.
+Or, skip all that and style your own with pure CSS!
 
-For example, to style the `calendar` component,
+The wrapper `div` of the component has a CSS class called `dpd` as a namespace, and each of the major UI elements in the datepicker has an associated class you can select for styling.
+
+For example, to style the `.calendar` element,
+![alt text](https://i.imgur.com/q7Q5Z7A.png)
+
+you would do this in your CSS file:
+
+```CSS
+.dpd .calendar {
+  background-color: #f1f1f1;
+  font-size: 0.8rem;
+}
+```
+
+So it's just pure CSS- You select a class name, but here we 'namespace' it under the `.dpd` class to prevent classes collision.
+
+## Usage
+
+Well, you use it like any other React component with props:
+
+```js
+import { Datepicker } from "datepickerdate";
+
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  return `${date.toLocaleString("en-US", {
+    month: "short"
+  })} ${date.getDate()}`;
+}
+
+class Datepicker extends Component {
+  handleCtrlChange(name, value) {
+    console.log(name, value);
+  }
+
+  render() {
+    return (
+      <Datepicker
+        name="yourFormControlName"
+        value="2019-08-28"
+        placeholder="Your custom placeholder"
+        onDateChanged={this.handleCtrlChange}
+        formatter={formatDate}
+      />
+    );
+  }
+}
+```
+
+## Formatting
+
+The display and transmission of a date are usually in a very different format.
+
+This datepicker output a selected date in the standard **ISO8601** format, effectively giving you total control in both cases.
+
+To display a selected date however you want, you will provide your own function that accepts an argument that is a ISO8601 date string.
+
+For example, to display a date like `Fri 28`:
+
+```js
+function dateFormatter(dateStr) {
+  const date = new Date(dateStr);
+  return `${date.toLocaleString("en-US", { month: "short" })} ${date.getDate()}`;
+}
+
+...
+
+<Datepicker formatter={dateFormatter} />
+```
