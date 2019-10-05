@@ -1,8 +1,8 @@
-<h1 style="font-size: 5rem" align="center">
+<h1 align="center">
   Datepicker
-  <img style="color: black;width:50px;height:50px;background:linen" />
+  <div style="color: black;width:50px;height:50px;backround:linen"></div>
 </h1>
-<p align="center" style="font-size: 1.2rem;">Gives you the most basic datepicker functionality, while having total freedom on what to do with the selected date(ISO8601), its display format, and the overall look & feel.</p>
+<p align="center">Gives you the most basic datepicker functionality, while having total freedom on what to do with the selected date(ISO8601), its display format, and the overall look & feel.</p>
 
 🦢 A **Preact** datepicker component
 
