@@ -1,8 +1,6 @@
-<h1 align="center">
-  Datepicker
-  <div style="color: black;width:50px;height:50px;backround:linen"></div>
-</h1>
-<p align="center">Gives you the most basic datepicker functionality, while having total freedom on what to do with the selected date(ISO8601), its display format, and the overall look & feel.</p>
+# Datepicker
+
+Gives you the most basic datepicker functionality, while having total freedom on what to do with the selected date(ISO8601), its display format, and the overall look & feel.
 
 🦢 A **Preact** datepicker component
 
