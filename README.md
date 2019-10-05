@@ -69,6 +69,7 @@ Or, skip all that and style your own with pure CSS!
 The wrapper `div` of the component has a CSS class called `dpd` as a namespace, and each of the major UI elements in the datepicker has an associated class you can select for styling.
 
 For example, to style the `.calendar` element,
+
 <img src="https://i.imgur.com/q7Q5Z7A.png" width="400" />
 
 you would do this in your CSS file:
@@ -138,24 +139,29 @@ Before transmitting and storing your date, you might want to convert it to a **U
 
 **label**: string
 _Optional_
+
 The label name of your datepicker form control.
 
 **name**: string
 _Optional_
+
 The `name` of your datepicker control. Exactly like the `name` in `<input name="age" />`
 
 **placeholder**: string
 _Optional_
+
 The placeholder for your datepicker input field.
 
 **value**: string
 _Optional_
+
 The initial date value.
 
 It must be in a format that can be parsed by the `Date` object. The standard practise is follow the **ISO8601** format (e.g `2019-10-22`) or in **UTC** (e.g `2019-10-05T05:51:02.124Z`)
 
 **onDateChanged**: (name: string, date: string) => void
 _Optional_
+
 A function to handle date changes.
 
 Parameter:
@@ -165,6 +171,7 @@ Parameter:
 
 **formatter**: (date: string) => string
 _Optional_
+
 A function to convert a selected date into a desired format to display in the UI.
 
 Parameter:
