@@ -129,7 +129,7 @@ function dateFormatter(dateStr) {
 <Datepicker formatter={dateFormatter} />
 ```
 
-#### Storage
+### Storage
 
 Before transmitting and storing your date, you might want to convert it to a **UTC** format by simply doing this:
 
