@@ -69,7 +69,7 @@ Or, skip all that and style your own with pure CSS!
 The wrapper `div` of the component has a CSS class called `dpd` as a namespace, and each of the major UI elements in the datepicker has an associated class you can select for styling.
 
 For example, to style the `.calendar` element,
-![alt text](https://i.imgur.com/q7Q5Z7A.png)
+<img src="https://i.imgur.com/q7Q5Z7A.png" width="400" />
 
 you would do this in your CSS file:
 
