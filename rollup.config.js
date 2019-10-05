@@ -3,19 +3,20 @@ import { terser } from "rollup-plugin-terser";
 import resolve from "rollup-plugin-node-resolve";
 import babel from "rollup-plugin-babel";
 import postcss from "rollup-plugin-postcss";
-import common from "rollup-plugin-commonjs";
+import filesize from "rollup-plugin-filesize";
 
 const plugins = [
   babel({
-    exclude: "node_modules/**", // only transpile our source code
-    comments: false
+    exclude: "node_modules/**"
   }),
   resolve(),
-  common(),
   postcss({
-    extract: true
+    extract: true,
+    minimize: true,
+    sourceMap: true
   }),
-  terser()
+  terser(),
+  filesize()
 ];
 
 export default [
@@ -46,12 +47,13 @@ export default [
     plugins
   },
   {
-    input: "src/app.js",
+    input: "src/demo/app.js",
     output: [
       {
-        file: "src/app.min.js",
+        file: "src/demo/app.min.js",
         format: "umd",
         name: "DatePickerDate",
+        sourcemap: true,
         globals: {
           preact: "preact"
         }

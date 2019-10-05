@@ -1,4 +1,4 @@
-import { h, Component } from 'preact'
+import { h, Component } from "preact";
 
 import calendar, {
   isDate,
@@ -8,46 +8,46 @@ import calendar, {
   getPreviousMonth,
   WEEK_DAYS,
   CALENDAR_MONTHS
-} from './calendar-helpers'
+} from "./calendar-helpers";
 
 export class Calendar extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       ...this.resolveStateFromDate(props.date),
       today: new Date()
-    }
+    };
   }
 
-  componentWillUnmount () {
-    this.clearPressureTimer()
+  componentWillUnmount() {
+    this.clearPressureTimer();
   }
 
   resolveStateFromDate = date => {
-    const d = isDate(date) ? date : new Date()
+    const d = isDate(date) ? date : new Date();
 
     return {
       current: d,
       month: d.getMonth() + 1,
       year: d.getFullYear()
-    }
+    };
   };
 
   getCalendarDates = () => {
-    const { current, month, year } = this.state
-    const calendarMonth = month || current.getMonth() + 1
-    const calendarYear = year || current.getFullYear()
+    const { current, month, year } = this.state;
+    const calendarMonth = month || current.getMonth() + 1;
+    const calendarYear = year || current.getFullYear();
 
-    return calendar(calendarMonth, calendarYear)
+    return calendar(calendarMonth, calendarYear);
   };
 
   // Render the month and year header with arrow controls
   // for navigating through months and years
   renderMonthAndYear = () => {
-    const { month, year } = this.state
+    const { month, year } = this.state;
 
     // Resolve the month name from the CALENDAR_MONTHS object map
-    const monthname = CALENDAR_MONTHS[month - 1]
+    const monthname = CALENDAR_MONTHS[month - 1];
 
     return (
       <div className="monthPicker">
@@ -73,7 +73,7 @@ export class Calendar extends Component {
           <span className="monthArrow">&#8594;</span>
         </button>
       </div>
-    )
+    );
   };
 
   // Render the label for day of the week
@@ -95,20 +95,20 @@ export class Calendar extends Component {
   renderCalendarDate = () => (
     <div role="presentation" className="dateLabels" onMouseDown={this.gotoDate}>
       {calendar(this.state.month, this.state.year).map((d, index) => {
-        const { current, month, year, today } = this.state
+        const { current, month, year, today } = this.state;
 
-        const dateStr = d.join('-')
+        const dateStr = d.join("-");
 
-        const date = new Date(dateStr)
+        const date = new Date(dateStr);
 
         // Check if calendar date is same day as today
-        const isToday = isSameDay(date, today)
+        const isToday = isSameDay(date, today);
 
         // Check if calendar date is same day as currently selected date
-        const isCurrent = isSameDay(date, current)
+        const isCurrent = isSameDay(date, current);
 
         // Check if calendar date is in the same month as the state month and year
-        const inMonth = isSameMonth(date, new Date(`${year}-${month}-01`))
+        const inMonth = isSameMonth(date, new Date(`${year}-${month}-01`));
 
         return (
           <div
@@ -116,28 +116,28 @@ export class Calendar extends Component {
             key={`${year}-${month}-${index}`}
             data-date={dateStr}
             className={[
-              !inMonth && 'notInMonth',
-              isCurrent && 'currentDay',
-              isToday && 'today',
-              'dateLabel'
+              !inMonth && "notInMonth",
+              isCurrent && "currentDay",
+              isToday && "today",
+              "dateLabel"
             ]
               .filter(Boolean)
-              .join(' ')}
+              .join(" ")}
           >
             {date.getDate()}
           </div>
-        )
+        );
       })}
     </div>
   );
 
   gotoDate = e => {
     // eslint-disable-next-line prefer-destructuring
-    const date = e.target.dataset.date
-    const { onDateChanged } = this.props
+    const date = e.target.dataset.date;
+    const { onDateChanged } = this.props;
 
-    this.setState(this.resolveStateFromDate(new Date(date)))
-    typeof onDateChanged === 'function' && onDateChanged(date)
+    this.setState(this.resolveStateFromDate(new Date(date)));
+    typeof onDateChanged === "function" && onDateChanged(date);
   };
 
   gotoPreviousMonth = () =>
@@ -156,18 +156,18 @@ export class Calendar extends Component {
 
   // to simulate pressure clicking for rapidly cycling through months or years
   handlePressure = fn => {
-    if (typeof fn !== 'function') return
+    if (typeof fn !== "function") return;
 
-    fn()
+    fn();
 
     this.pressureTimeout = setTimeout(() => {
-      this.pressureTimer = setInterval(fn, 100)
-    }, 500)
+      this.pressureTimer = setInterval(fn, 100);
+    }, 500);
   };
 
   clearPressureTimer = () => {
-    this.pressureTimer && clearInterval(this.pressureTimer)
-    this.pressureTimeout && clearTimeout(this.pressureTimeout)
+    this.pressureTimer && clearInterval(this.pressureTimer);
+    this.pressureTimeout && clearTimeout(this.pressureTimeout);
   };
 
   handlePrevious = evt =>
@@ -178,13 +178,13 @@ export class Calendar extends Component {
   handleNext = evt =>
     this.handlePressure(evt.shiftKey ? this.gotoNextYear : this.gotoNextMonth);
 
-  render () {
+  render() {
     return (
       <div className="calendar">
         {this.renderMonthAndYear()}
         {this.renderDayLabels()}
         {this.renderCalendarDate()}
       </div>
-    )
+    );
   }
 }
