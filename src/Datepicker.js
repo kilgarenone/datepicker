@@ -51,7 +51,7 @@ export class Datepicker extends Component {
 
   render({ label, placeholder, formatter = d => d }, { date, calendarOpen }) {
     return (
-      <div ref={this.datepickerRef} className="dpd" style="position:relative">
+      <div ref={this.datepickerRef} class="dpd" style="position:relative">
         {label && <label>{label}</label>}
         <input
           type="text"

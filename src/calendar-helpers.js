@@ -7,23 +7,14 @@ export const THIS_YEAR = new Date().getFullYear();
 export const THIS_MONTH = new Date().getMonth() + 1;
 
 // Week days names and shortnames
-export const WEEK_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+export const WEEK_DAYS = [...Array(7).keys()].map(d =>
+  new Date(2017, 9, d + 1).toLocaleString(undefined, { weekday: "short" })
+);
 
 // Calendar months names and shortnames
-export const CALENDAR_MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
+export const CALENDAR_MONTHS = [...Array(12).keys()].map(d =>
+  new Date(2017, d, 1).toLocaleString(undefined, { month: "long" })
+);
 
 // Weeks displayed on calendar
 export const CALENDAR_WEEKS = 5;

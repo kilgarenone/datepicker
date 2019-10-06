@@ -50,27 +50,27 @@ export class Calendar extends Component {
     const monthname = CALENDAR_MONTHS[month - 1];
 
     return (
-      <div className="monthPicker">
+      <div class="monthPicker">
         <button
           type="button"
-          className="prevMonth"
+          class="prevMonth"
           onMouseDown={this.handlePrevious}
           onMouseUp={this.clearPressureTimer}
           title="Previous Month"
         >
-          <span className="monthArrow">&#8592;</span>
+          <span class="monthArrow">&#8592;</span>
         </button>
-        <div className="monthYearLabel">
+        <div class="monthYearLabel">
           {monthname} {year}
         </div>
         <button
           type="button"
-          className="nextMonth"
+          class="nextMonth"
           onMouseDown={this.handleNext}
           onMouseUp={this.clearPressureTimer}
           title="Next Month"
         >
-          <span className="monthArrow">&#8594;</span>
+          <span class="monthArrow">&#8594;</span>
         </button>
       </div>
     );
@@ -81,9 +81,9 @@ export class Calendar extends Component {
   renderDayLabels = () => (
     // Resolve the day of the week label from the WEEK_DAYS object map
     // const daylabel = WEEK_DAYS[day].toUpperCase();
-    <div className="dayLabels">
+    <div class="dayLabels">
       {WEEK_DAYS.map(day => (
-        <div key={day} className="dayLabel">
+        <div key={day} class="dayLabel">
           {day.toUpperCase()}
         </div>
       ))}
@@ -93,7 +93,7 @@ export class Calendar extends Component {
   // Render a calendar date as returned from the calendar builder function
   // This method is used as a map callback as seen in render()
   renderCalendarDate = () => (
-    <div role="presentation" className="dateLabels" onMouseDown={this.gotoDate}>
+    <div role="presentation" class="dateLabels" onMouseDown={this.gotoDate}>
       {calendar(this.state.month, this.state.year).map((d, index) => {
         const { current, month, year, today } = this.state;
 
@@ -115,7 +115,7 @@ export class Calendar extends Component {
             // eslint-disable-next-line react/no-array-index-key
             key={`${year}-${month}-${index}`}
             data-date={dateStr}
-            className={[
+            class={[
               !inMonth && "notInMonth",
               isCurrent && "currentDay",
               isToday && "today",
@@ -180,7 +180,7 @@ export class Calendar extends Component {
 
   render() {
     return (
-      <div className="calendar">
+      <div class="calendar">
         {this.renderMonthAndYear()}
         {this.renderDayLabels()}
         {this.renderCalendarDate()}
