@@ -135,6 +135,10 @@ Before transmitting and storing your date, you might want to convert it to a **U
 
 `new Date().toISOString() // 2019-10-05T05:51:02.124Z`
 
+## Locales
+
+Locales defaults to user's browser's default locale. It uses the [`Date.prototype.toLocaleString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString)
+
 ## Props
 
 **label**: string
