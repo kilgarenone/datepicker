@@ -21,7 +21,7 @@ const plugins = [
 
 export default [
   {
-    input: "src/Datepicker.js",
+    input: "src/index.js",
     external: ["preact"],
     output: [
       {
