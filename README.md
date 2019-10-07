@@ -148,19 +148,19 @@ _Optional_
 The label name of your datepicker form control.
 
 **name**: string
-
+<br>
 _Optional_
 
 The `name` of your datepicker control. Exactly like the `name` in `<input name="age" />`
 
 **placeholder**: string
-
+<br>
 _Optional_
 
 The placeholder for your datepicker input field.
 
 **value**: string
-
+<br>
 _Optional_
 
 The initial date value.
@@ -168,7 +168,7 @@ The initial date value.
 It must be in a format that can be parsed by the `Date` object. The standard practise is follow the **ISO8601** format (e.g `2019-10-22`) or in **UTC** (e.g `2019-10-05T05:51:02.124Z`)
 
 **onDateChanged**: (name: string, date: string) => void
-
+<br>
 _Optional_
 
 A function to handle date changes.
@@ -179,7 +179,7 @@ Parameter:
 2. `date` - The selected date in ISO8601 format as a `string`.
 
 **formatter**: (date: string) => string
-
+<br>
 _Optional_
 
 A function to convert a selected date into a desired format to display in the UI.
