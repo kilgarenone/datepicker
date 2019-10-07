@@ -142,7 +142,6 @@ Locales defaults to user's browser's default locale. It uses the [`Date.prototyp
 ## Props
 
 **label**: string
-
 _Optional_
 
 The label name of your datepicker form control.
