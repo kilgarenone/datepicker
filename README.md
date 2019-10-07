@@ -14,7 +14,7 @@ Gives you the most basic datepicker functionality, while having total freedom on
 
 https://kheohyeewei.com/datepicker/
 
-## Install
+## Installation
 
 You can install `datepickerdate` as an NPM package:
 
