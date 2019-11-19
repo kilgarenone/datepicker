@@ -17,7 +17,6 @@ class DatepickerDate extends Component {
     return (
       <Datepicker
         name="date"
-        label="Label"
         value="2019-09-11"
         onDateChanged={this.handleChange}
         formatter={formatDate}

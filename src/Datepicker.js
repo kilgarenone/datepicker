@@ -49,10 +49,9 @@ export class Datepicker extends Component {
     typeof onDateChanged === "function" && onDateChanged(name, dateStr);
   };
 
-  render({ label, placeholder, formatter = d => d }, { date, calendarOpen }) {
+  render({ placeholder, formatter = d => d }, { date, calendarOpen }) {
     return (
       <div ref={this.datepickerRef} class="dpd" style="position:relative">
-        {label && <label>{label}</label>}
         <input
           type="text"
           value={formatter(date)}
