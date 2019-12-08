@@ -182,6 +182,9 @@ Parameter:
 
 1. `date` - The selected date in ISO8601 format as a `string`.
 
+## Article
+https://medium.com/@kilgarenone/own-your-datepicker-component-49ea2773115b
+
 ## Credits
 
 I started with this [guide](https://blog.logrocket.com/react-datepicker-217b4aa840da/) on building datepicker for React.
