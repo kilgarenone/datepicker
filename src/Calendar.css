@@ -1,13 +1,15 @@
 .dpd .calendar {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 0;
   background-color: #fff;
   border-radius: 4px;
   padding: 1rem;
   padding-top: 0.5rem;
   min-width: 17rem;
   z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px,
+    rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
 }
 
 .dpd .monthPicker {
@@ -16,15 +18,16 @@
   margin-bottom: 0.5rem;
 }
 
-.dpd .prevMonth {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
+.dpd .prevMonth,
 .dpd .nextMonth {
   display: flex;
   align-items: center;
+  width: 100%;
+}
+.dpd .prevMonth {
+  justify-content: flex-start;
+}
+.dpd .nextMonth {
   justify-content: flex-end;
 }
 

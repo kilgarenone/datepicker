@@ -22,6 +22,11 @@ export class Datepicker extends Component {
   }
 
   checkClickOutside = e => {
+    if (e.type === "keydown" && e.key === "Escape") {
+      this.toggleCalendar();
+      return;
+    }
+
     if (this.datepickerRef.current) {
       if (!this.datepickerRef.current.contains(e.target)) {
         this.toggleCalendar();
@@ -34,8 +39,10 @@ export class Datepicker extends Component {
       prevState => ({ calendarOpen: !prevState.calendarOpen }),
       () => {
         if (this.state.calendarOpen) {
+          document.addEventListener("keydown", this.checkClickOutside);
           document.addEventListener("click", this.checkClickOutside);
         } else {
+          document.removeEventListener("keydown", this.checkClickOutside);
           document.removeEventListener("click", this.checkClickOutside);
         }
       }

@@ -15,7 +15,9 @@
     "react/prop-types": "off",
     "react/no-unknown-property": [
       "error",
-      { "ignore": ["class"] } // don't auto format these attrs
+      {
+        "ignore": ["class", "stroke-linecap", "stroke-linejoin", "stroke-width"]
+      } // don't auto format these attrs
     ]
   },
   "settings": {
