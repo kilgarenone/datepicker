@@ -137,7 +137,8 @@ export class Calendar extends Component {
         const inMonth = isSameMonth(date, new Date(`${year}-${month}-01`));
 
         return (
-          <div
+          <button
+            type="button"
             // eslint-disable-next-line react/no-array-index-key
             key={`${year}-${month}-${index}`}
             data-date={dateStr}
@@ -151,7 +152,7 @@ export class Calendar extends Component {
               .join(" ")}
           >
             {date.getDate()}
-          </div>
+          </button>
         );
       })}
     </div>

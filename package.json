@@ -1,6 +1,6 @@
 {
   "name": "datepickerdate",
-  "version": "1.4.3",
+  "version": "1.4.5",
   "description": "A lightweight datepicker component for Preact",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
