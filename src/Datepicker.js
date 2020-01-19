@@ -1,4 +1,4 @@
-import { h, Component, createRef } from "preact";
+import { h, Component } from "preact";
 
 import { Calendar } from "./Calendar";
 import { getDateISO } from "./calendar-helpers";
@@ -6,8 +6,6 @@ import "./Calendar.css";
 
 export class Datepicker extends Component {
   state = { date: null, calendarOpen: false };
-
-  datepickerRef = createRef();
 
   componentDidMount() {
     const { value: date } = this.props;
@@ -17,36 +15,8 @@ export class Datepicker extends Component {
     this.setState({ date: getDateISO(new Date(date)) });
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("click", this.checkClickOutside);
-  }
-
-  checkClickOutside = e => {
-    if (e.type === "keydown" && e.key === "Escape") {
-      this.toggleCalendar();
-      return;
-    }
-
-    if (this.datepickerRef.current) {
-      if (!this.datepickerRef.current.contains(e.target)) {
-        this.toggleCalendar();
-      }
-    }
-  };
-
   toggleCalendar = () => {
-    this.setState(
-      prevState => ({ calendarOpen: !prevState.calendarOpen }),
-      () => {
-        if (this.state.calendarOpen) {
-          document.addEventListener("keydown", this.checkClickOutside);
-          document.addEventListener("click", this.checkClickOutside);
-        } else {
-          document.removeEventListener("keydown", this.checkClickOutside);
-          document.removeEventListener("click", this.checkClickOutside);
-        }
-      }
-    );
+    this.setState(prevState => ({ calendarOpen: !prevState.calendarOpen }));
   };
 
   handleDateChange = dateStr => {
@@ -58,7 +28,7 @@ export class Datepicker extends Component {
 
   render({ placeholder, formatter = d => d }, { date, calendarOpen }) {
     return (
-      <div ref={this.datepickerRef} class="dpd" style="position:relative">
+      <div class="dpd" style="position:relative">
         <input
           type="text"
           value={formatter(date)}
@@ -70,6 +40,7 @@ export class Datepicker extends Component {
           <Calendar
             date={date && new Date(date)}
             onDateChanged={this.handleDateChange}
+            toggleCalendar={this.toggleCalendar}
           />
         )}
       </div>

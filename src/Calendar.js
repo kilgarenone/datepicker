@@ -1,4 +1,4 @@
-import { h, Component } from "preact";
+import { h, Component, createRef } from "preact";
 
 import calendar, {
   isDate,
@@ -17,11 +17,32 @@ export class Calendar extends Component {
       ...this.resolveStateFromDate(props.date),
       today: new Date()
     };
+
+    this.calendarRef = createRef();
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.checkClickOutside, true);
+    document.addEventListener("click", this.checkClickOutside, true);
   }
 
   componentWillUnmount() {
-    this.clearPressureTimer();
+    document.removeEventListener("keydown", this.checkClickOutside, true);
+    document.removeEventListener("click", this.checkClickOutside, true);
   }
+
+  checkClickOutside = e => {
+    if (e.type === "keydown" && e.key === "Escape") {
+      this.props.toggleCalendar();
+      return;
+    }
+
+    if (this.calendarRef.current) {
+      if (!this.calendarRef.current.contains(e.target)) {
+        this.props.toggleCalendar();
+      }
+    }
+  };
 
   resolveStateFromDate = date => {
     const d = isDate(date) ? date : new Date();
@@ -54,8 +75,7 @@ export class Calendar extends Component {
         <button
           type="button"
           class="prevMonth"
-          onMouseDown={this.handlePrevious}
-          onMouseUp={this.clearPressureTimer}
+          onClick={this.handlePrevious}
           title="Previous Month"
         >
           <svg
@@ -79,8 +99,7 @@ export class Calendar extends Component {
         <button
           type="button"
           class="nextMonth"
-          onMouseDown={this.handleNext}
-          onMouseUp={this.clearPressureTimer}
+          onClick={this.handleNext}
           title="Next Month"
         >
           <svg
@@ -181,34 +200,16 @@ export class Calendar extends Component {
   gotoNextYear = () =>
     this.setState(prevState => ({ year: prevState.year + 1 }));
 
-  // to simulate pressure clicking for rapidly cycling through months or years
-  handlePressure = fn => {
-    if (typeof fn !== "function") return;
-
-    fn();
-
-    this.pressureTimeout = setTimeout(() => {
-      this.pressureTimer = setInterval(fn, 100);
-    }, 500);
-  };
-
-  clearPressureTimer = () => {
-    this.pressureTimer && clearInterval(this.pressureTimer);
-    this.pressureTimeout && clearTimeout(this.pressureTimeout);
-  };
-
   handlePrevious = evt =>
-    this.handlePressure(
-      evt.shiftKey ? this.gotoPreviousYear : this.gotoPreviousMonth
-    );
+    evt.shiftKey ? this.gotoPreviousYear() : this.gotoPreviousMonth();
 
   handleNext = evt =>
-    this.handlePressure(evt.shiftKey ? this.gotoNextYear : this.gotoNextMonth);
+    evt.shiftKey ? this.gotoNextYear() : this.gotoNextMonth();
 
   render() {
     return (
       <div class="calendar">
-        <div>
+        <div ref={this.calendarRef}>
           {this.renderMonthAndYear()}
           {this.renderDayLabels()}
           {this.renderCalendarDate()}
