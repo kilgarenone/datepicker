@@ -208,9 +208,11 @@ export class Calendar extends Component {
   render() {
     return (
       <div class="calendar">
-        {this.renderMonthAndYear()}
-        {this.renderDayLabels()}
-        {this.renderCalendarDate()}
+        <div>
+          {this.renderMonthAndYear()}
+          {this.renderDayLabels()}
+          {this.renderCalendarDate()}
+        </div>
       </div>
     );
   }
